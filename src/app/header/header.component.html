@@ -1,0 +1,59 @@
+
+<div class="header">
+<div class="header-container">
+    <div class="language-container">
+        <div class="userName"><p>{{'Hello'|Translate}} {{UserName}} |</p>
+        <button *ngIf="Login" (click)="Logout()">{{Logout}}</button></div>
+        <div class="language">
+        <div *ngFor="let s of Strings">
+            <a *ngIf="s!=language" class="closebtn"  (click)="FuncTranslate(s)"> {{s|Translate}}</a>
+         </div>
+            <div *ngIf="displayFlag" (click)="FuncTranslate('EN')"> <img class="img-language" src="./assets/images/USA.png"/></div>
+             <div *ngIf="!displayFlag" (click)="FuncTranslate('HE')"><img class="img-language" src="./assets/images/flag-israel.jpg"/>  </div>
+          </div>
+        </div>
+
+  <div class="right-header">
+     
+    <ul>
+        <li>
+            <span class="menu" (mouseover)="Menu=!Menu">&#9776;</span>
+            <div  (mouseleave)="Menu=!Menu">
+               <meta name="viewport" content="width=device-width, initial-scale=1">
+               <div *ngIf="Menu" class="sidenav">
+                  <a  class="closebtn" (click)="homepage()">{{'HomePage'|Translate}}</a>
+                  <a  class="closebtn" (click)="FuncCourses()">{{'Courses'|Translate}}</a>
+                  <a class="closebtn" (click)="FuncOpenCours()">{{'Open'|Translate}}</a>
+                  <a  class="closebtn" (click)="FuncAbout()">{{'About'|Translate}}</a>
+                  <a  class="closebtn" (click)="FuncContact()" >{{'contact'|Translate}}</a>
+                  <a  class="closebtn" (click)="FuncSurveys()">{{'Surveys'|Translate}}</a>
+               </div>
+            </div>
+         
+        </li>
+      <li>
+        <a (click)="homepage()">דף הבית
+          <span class="glyphicon glyphicon-home"></span>
+        </a>
+      </li>
+      <li>
+        <a (click)="FuncLogin()"> אזור אישי
+          <span class="glyphicon glyphicon-user"></span>
+        </a>
+      </li>
+      <li>
+        <a (click)="FuncContact()">צור קשר
+          <span class="glyphicon glyphicon-earphone"></span>
+        </a>
+      </li>
+     
+      <!-- <div class="glyphicon">{{'Hello'|Translate}} {{UserName}}</div> -->
+    </ul>
+    <div class="logo">
+        <img src="..\assets\images\logo.png" >  
+    </div>
+  </div>
+
+
+</div>
+</div>

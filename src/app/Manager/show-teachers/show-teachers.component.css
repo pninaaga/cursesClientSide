@@ -1,0 +1,111 @@
+.manager-teacher{
+    margin-top: 18rem;
+  }
+  .manager-teacher p{
+    font-size: 39px;
+    margin-left: 9%;
+    border-bottom: 1px solid black;
+    margin-bottom: 3rem;
+  }
+  .table-teacher tr th{
+    background-color: #abdcac;
+  }
+  .btn-success{
+    background-color: #4c7b4c;
+    width: 9rem;
+  }
+
+.manager-teacher p{
+  font-size: 39px;
+  margin-left: 9%;
+  border-bottom: 1px solid black;
+  margin-bottom: 3rem;
+}
+.DeleteConfirm{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+/* 
+.DeleteConfirmText{
+  background-color: white;
+  height: 30rem;
+  width: 45%;
+  margin-top: 18rem;
+  position: relative;
+}
+.DeleteConfirmButton{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:100%;
+  height: 8rem;
+  background-color: #294156;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  
+}
+.DeleteConfirmButton button{
+  background-color: white;
+  color: #294156;
+  font-size: 15px;
+  width: 42%;
+  border-color: white;
+  height: 40px;
+}
+.DeleteConfirmButton button:hover{
+  background-color:#f5f7f9 ;
+}
+.DeleteConfirmText p{
+  color: #294156;
+  font-size: 31px;
+  margin-top: 8rem;
+}
+.Exit{
+  position: absolute;
+  top:-2px;
+  left: 0;
+  font-size: 35px;
+  color:#294156;
+  background-color: transparent; 
+  height: 5rem;
+  width: 5rem;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Exit:hover{
+  background-color:red;
+  color: white;
+} */
+/* .Create{
+  width: 16rem;
+    height: 42px;
+    border-radius: 5px;
+    background-color: #e5e6e5;
+    border: none;
+    color: #294156;
+    margin-bottom: 14px;
+} */
+.Teacher-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 81%;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  text-align: center;
+}
+#DeleteConfirmError{
+  font-size: 13px;
+  margin-top: -5px;
+}
+

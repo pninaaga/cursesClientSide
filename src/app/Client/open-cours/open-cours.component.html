@@ -1,0 +1,51 @@
+<div>
+  <h1>{{'Open' | Translate}}</h1>
+ <!-- <h1>LookForTeacher</h1> {{teacher.FirstName}} -->
+  <!-- בעקרון לא מגיע לכאן מראש אלא קודם יש דף עם קריטריונים -->
+  <form (ngSubmit)="ContinueOpenCours()" #formOpenCours="ngForm">
+    <!-- <label for="FirstName">{{'Name'|Translate}}</label> -->
+    <!-- <input type="text" name="FirstName" id="firstname" [(ngModel)]="model.FirstNameS" #theFirstName="ngModel"><br><br>
+    <label for="LastName">{{'LastName'|Translate}}</label>
+    <input type="text" name="LastName" id="lastname" [(ngModel)]="model.LastNameS" #theLastName="ngModel"><br><br>
+    <label for="Tz">{{'Tz'|Translate}}</label>
+    <input type="text" name="Tz" id="tz" [(ngModel)]="model.TzS" #theTz="ngModel"><br><br>
+    <label for="Phone">{{'Phone'|Translate}}</label>
+    <input type="text" name="Phone" id="phone" [(ngModel)]="model.PhoneS" #thePhone="ngModel"><br><br> -->
+
+
+    <label>{{'Name'|Translate}}: </label>
+    <label> {{ model.FirstName}}</label><br>
+    <label>{{'LastName'|Translate}}: </label>
+    <label> {{model.LastName}}</label><br>
+    <label>{{'Tz'|Translate}}: </label>
+    <label> {{model.Tz}}</label><br>
+    <label>{{'Phone'|Translate}}: </label>
+    <label> {{model.Phone}}</label><br>
+    <label>{{'Mail'|Translate}}: </label>
+    <label> {{model.MailToConnect}}</label><br>
+
+    <label for="Address" >{{'Address'|Translate}}</label>
+    <input type="text" name="Address" id="address" [(ngModel)]="model.AddressS"><br><br> 
+
+    <label for="Subject">{{'Subject'|Translate}}</label>
+    <select (change)="ChooseSubject()"  name="Subject" id="subject"   [(ngModel)]="model.Subject" >
+      <!-- <option>בחר נושא</option> -->
+      <option  *ngFor="let s of Subjects">{{s.SubjectName}}</option>
+    </select>
+    <button  (click)="Different=!Different">...</button>
+    <input *ngIf="Different" type="text" [(ngModel)]="model.otherSubject"><br><br>
+    <label  for="Day">{{'Day'|Translate}}</label>
+    <select (change)="ChooseDay()" [(ngModel)]="model.DayInWeekC" name="Day" id="day">
+      <option>{{'Sunday'|Translate}}</option>
+      <option>{{'Monday'|Translate}}</option>
+      <option>{{'Tuesday'|Translate}}</option>
+      <option>{{'Wednesday'|Translate}}</option>
+      <option>{{'Thursday'|Translate}}</option>
+    </select>  
+  </form>
+ 
+  <button type="submit" style="transform: scale(0.95);" (click)="ContinueOpenCours()" [disabled]="!formOpenCours.form.valid">{{'Continue'|Translate}}</button>
+
+  <button (click)="FuncBack()">ביטול</button>
+  
+</div>

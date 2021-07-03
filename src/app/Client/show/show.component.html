@@ -1,0 +1,121 @@
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+<!-- <script>
+      $(document).ready(function(){
+  $(".stazItem").hover(function(){
+    $(this).css("background-color", "yellow");
+    }, function(){
+    $(this).css("background-color", "pink");
+  }); 
+});
+document.getElementById("p2").style.Color = "blue";
+    </script> -->
+<!-- <div *ngFor="let s of show">
+  <div *ngIf="s!=null">
+    <button class="btn-Default" (click)="Func(s.IdFatherSubject)">{{s.SubjectName}} <br>
+      <button *ngIf="temp==2" class="btn-success" (click)="FuncClick(s.IdSubject)">{{DisplyOrHiddenDetails}}
+      </button></button><br>
+    <!-- <button class="btn-success" (click)="ShowDetails=true">{{'MoreDetails'|Translate}}</button> -->
+<!-- <app-more-details *ngIf="ShowDetails" [id]="s.IdSubject"></app-more-details> -->
+<!-- <div *ngIf="temp==2"> -->
+<!-- <button class="btn-success" (click)="FuncClick(s.IdSubject)">{{'Details'|Translate}}</button> -->
+<!-- <app-more-details *ngIf="p===s.IdSubject && tempMoreDetails==true" [idd]=(s.IdSubject)></app-more-details><br> -->
+<!-- <button (click)="FuncRegistration(s.SubjectName)">{{'Registration'|Translate}}</button> -->
+<!-- <button (click)="FuncRegistration(s.SubjectName,s.IdSubject)">{{'Registration'|Translate}}</button> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<div class="subjectsContainer">
+<div *ngFor="let s of show" class="subject">
+  <div *ngIf="s!=null" class="bigDiv" [ngClass]="{ 'ColorOpenCours' : s.OpenCourse}" ng-mouseover="hhover=true" ng-mouseleave="hhover=false">
+    <!-- <div (mouseover)="hover=true" (mouseleave)="hover=false" style="background-color: red; height:10rem; width:10rem">   -->
+        <div style="display: none" [ngClass]="{'hover-reg-course' : !Login && temp==2}">
+          <div class="cursorClassButton" style="display: none">
+            <button (click)="ConnectToSite(1)">התחבר</button>
+            <button (click)="ConnectToSite(2)">הרשם</button>
+          </div>
+        </div>
+      <div class="stazItem" (click)="Func(s.IdFatherSubject)" [ngClass]="{'cursorClass' : !Login && temp==2}">
+ 
+      <!-- (mouseover)="hover=true" (mouseleave)="hover=fa1lse" -->
+     
+      <div class="stazRight" >
+        <!-- <img src="assets/uploads/{{u.image}}"> -->
+
+        <!-- <img src="../images/courses/inside_Courses_tzuna.jpg" name="bigPic" width="170px" id="bigPic" border="0"> -->
+        <img src='../../../assets/images/{{s.Picture}}'  name="bigPic" width="170px" id="bigPic" border="0">
+        <h2>{{s.SubjectName}}</h2>
+        <div *ngIf="temp==2" class="subDetails">
+          <div class="stazData"> עלות מפגש:
+            <strong>{{s.PricePerHour}}₪</strong> 
+            <br> מס' מפגשים:
+            <strong>{{s.AmountHour}}</strong>
+            <br>
+            <!-- <button (click)="show12 = !show12">{{show12 ? 'more' : 'less'}}</button> -->
+            <!-- <button class="btn-success" (click)="FuncClick(s.IdSubject,show12)">{{show12 ? 'more' : 'less'}}</button>
+        <div id="app-content" ng-show="false"></div>
+         
+            <app-more-details *ngIf="p===s.IdSubject && show12;else elseBlock"  [idd]=(s.IdSubject)></app-more-details>
+            <ng-template #elseBlock></ng-template> -->
+            <!-- *ngIf="p===s.IdSubject && tempMoreDetails==true" -->
+            <!-- <button (click)="show11 = !show11" (click)="p=s.IdCourse">
+              <div *ngIf="p===s.IdCourse">{{show11 ? 'less' : 'more'}}</div>
+              <div *ngIf="p!=s.IdCourse">more</div>
+            </button> -->
+            <!-- <div *ngIf="p===s.IdCourse"> -->
+              <!-- <button (click)="show11 = !show11">{{show11 ? 'more' : 'less'}}</button> -->
+              <hr>
+              <details>
+                <summary>more </summary>
+                <br/>
+              <!-- <div *ngIf="p===s.IdCourse && show11 ; else elseBlock"> -->
+                <app-more-details [idd]="s.IdCourse" ></app-more-details>
+                
+                
+              <!-- </div> -->
+            </details>
+
+              <ng-template #elseBlock></ng-template>
+            <!-- </div> -->
+            <button (click)="FuncRegistration(s.SubjectName,s.IdCourse)">{{'Registration'|Translate}}</button>
+          </div>
+
+        </div>
+      </div>
+      <div class="stazInside">
+        <div style="font-weight:bold;margin-bottom:15px;">הטיפול ניתן ע"י מתמחים/ות בוגרי קורס יעוץ בריאות (תזונה) במכללת שלם המלוות מקצועית ע"י סגל המכללה.</div>
+        <div>{{s.CourseExplainText}}</div>
+        <!-- <div>
+          <p>תזונה נכונה היא דרך חיים הבונה חומת חוסן בפני מחלות וכשלים גופניים ונפשיים, והשימוש בה לשם ריפוי, היא אבן היסוד
+            ברפואה הטבעית.&nbsp;בניית התפריט התזונתי היא אינדיבידואלית לכל מטופל ומתחשבת ברגישויותיו, טעמו האישי , החסרים
+            הספציפיים בגופו וכן הלאה.&nbsp;מסלול זה מקנה למטפל את אחד הכלים המרכזיים בטיפול הטבעי והוא היכולת ליעץ לאורח
+            חיים בריא באמצעות הרגלי תזונה נכונים המאפשרים שיקום מערכות הגוף ובריאות טובה.</p>
+        </div> -->
+      </div>
+      <div style="float:none;clear:both;"></div>
+
+    </div>
+  </div>
+</div>
+<span>hello {{ hover }}</span>
+<!-- </div> -->
+<!-- Hide HTML: <input type="checkbox" [(ngModel)]="myVar">
+
+    <div ng-hide="myVar">
+    <h1>Welcome</h1>
+    <p>Welcome to my home.</p>
+    </div>
+      </div>
+    </div> -->
+    <div *ngIf="ShowPopupErrorRegistration" class="PopupErrorRegistration">
+      <div class="PopupErrorRegistration-text">
+          <h6 class="Exit" (click)="CancelDeleteStudent()">X</h6>
+        <p>יש להרשם קודם לאתר</p>
+        <div class="ShowPopupErrorRegistrationButton">
+          <button class="button-ok" (click)="OkDeleteStudent()">{{'OK'|Translate}}</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

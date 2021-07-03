@@ -1,0 +1,35 @@
+<div class="title" *ngIf="id==0">{{'CreateSubject'|Translate}}</div>
+<div class="title" *ngIf="id!=0">{{'EditSubject'|Translate}} </div>
+<div class="EditCreateSubject">
+  <form (ngSubmit)="FuncSave()" #theForm="ngForm">
+    <label for="SubjectName">{{'Subject'|Translate}}</label>
+    <input type="text" id="SubjectName" name="SubjectName" [(ngModel)]="model.SubjectName" #theSubjectName="ngModel" >
+    <br>
+    <br>
+    <!-- <div *ngIf="model.SubjectNameFather">
+      <label for="SubjectNameFather">{{'FatherSubject'|Translate}}</label>
+      <input *ngIf="model.SubjectNameFather" type="text" id="SubjectNameFather" name="SubjectNameFather" [(ngModel)]="model.SubjectNameFather"
+        #theSubjectNameFather="ngModel">
+      <br>
+      <br>
+    </div> -->
+    <!-- *ngIf="id==0" -->
+    <div>
+      <label for="AllSubject">{{'FatherSubject'|Translate}}</label>
+      <select name="AllSubject" id="AllSubject" placeholder="בחר קטגוריה" [(ngModel)]="model.SubjectNameFather" #theIdFatherSubject="ngModel">
+        <option>NULL</option>
+        <!-- <option></option> -->
+        <option *ngFor="let allSubject of AllSubject">{{allSubject.SubjectName}}</option>
+      </select>
+    </div>
+    <label for="Picture">{{'Picture'|Translate}}</label>
+    <input type="text" id="Picture" name="Picture" [(ngModel)]="model.Picture" #thePicture="ngModel">
+    <br>
+    <br>
+    <label for="CourseExplainText">{{'CourseExplainText'|Translate}}</label>
+    <input type="text" id="CourseExplainText" name="CourseExplainText" [(ngModel)]="model.CourseExplainText" #theCourseExplainText="ngModel">
+    <br>
+    <br>
+    <button type="submit" [disabled]="!theForm.form.valid">{{'Ok'|Translate}}</button>
+  </form>
+</div>

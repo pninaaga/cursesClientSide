@@ -1,0 +1,68 @@
+<div class="title" *ngIf="temp=='Create'">{{'CreateTeacher'|Translate}}</div>
+<div class="title" *ngIf="temp=='Edit'">{{'EditTeacher'|Translate}} </div>
+<div class=EditCreateTeacher>
+  <form (ngSubmit)="FuncSave()" #formR="ngForm">
+    <label for="Tz">{{'Tz'|Translate}}</label>
+    <input type="text" id="Tz" name="tz" [(ngModel)]="model.TzT" #theTzT="ngModel">
+    <br>
+    <br>
+    <label for="name">{{'Name'|Translate}}</label>
+    <input type="text" id="name" name="name" [(ngModel)]="model.FirstNameT" #thename="ngModel">
+    <br>
+    <br>
+    <label for="lastName">{{'LastName'|Translate}}</label>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="model.LastNameT" #theLastName="ngModel" required>
+    <br>
+    <br>
+    <label for="address">{{'Address'|Translate}}</label>
+    <input type="text" id="address" name="address" [(ngModel)]="model.AddressT" #theAddress="ngModel">
+    <br>
+    <br>
+    <label for="phone">{{'Phone'|Translate}}</label>
+    <input type="text" id="phone" name="phone" [(ngModel)]="model.PhoneT" #thePhone="ngModel">
+    <br>
+    <br>
+    <label for="mail">{{'Mail'|Translate}}</label>
+    <input type="email" id="mail" name="mail" [(ngModel)]="model.EmailT" #theMail="ngModel">
+    <br>
+    <br>
+    <label for="Price">{{'Price'|Translate}}</label>
+    <input type="text" id="Price" name="Price" [(ngModel)]="model.Price" #thePrice="ngModel">
+    <br>
+    <br>
+    <label for="Prefer">{{'Prefer'|Translate}}</label>
+    <input type="text" id="Prefer" name="Prefer" [(ngModel)]="model.Prefer" #thePrefer="ngModel">
+    <br>
+    <br>
+    <div>
+    <label>תחום:</label>
+    <div class="SubjectOfTeacherContainer">
+    <div class="SubjectOfTeacher" *ngFor="let s of Subjects">
+      <label>{{s.SubjectName}}</label>
+      <div class="SubSubjectsOfTeacherContainer">
+      <div *ngFor="let ss of SubSubjects">
+        <div *ngIf="s.IdSubject==ss.IdFatherSubject" class="SubSubjectsOfTeacher">
+          <input type="checkbox" [value]="ss.IdSubject" (change)="onCheckChange($event)">{{ss.SubjectName}}</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div>
+  <label>פניות:</label>
+  <div>
+    <input type="checkbox" [value]="1" (change)="onCheckChangeDays($event)">ראשון
+      <input type="checkbox" [value]="2" (change)="onCheckChangeDays($event)">שני
+      <input type="checkbox" [value]="3" (change)="onCheckChangeDays($event)">שלישי
+      <input type="checkbox" [value]="4" (change)="onCheckChangeDays($event)">רביעי
+      <input type="checkbox" [value]="5" (change)="onCheckChangeDays($event)">חמישי
+  </div>
+</div>
+    <button type="submit" [disabled]="!formR.form.valid">{{'Ok'|Translate}}</button>
+  </form>
+
+  <!-- <ion-checkbox aria-checked="mixed">hjhj</ion-checkbox> -->
+
+</div>
+<!-- <label for="temp">temp</label> -->
+<!-- <input type="text" name="temp" id="temp" [(ngModel)]="model.TzT" #thetemp="ghghghg"> -->

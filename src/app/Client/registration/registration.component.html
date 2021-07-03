@@ -1,0 +1,64 @@
+<div class="bigDiv">
+  <div class="registration" style="display: flex">
+    <form class="form" (ngSubmit)="FuncSave()" #formR="ngForm">
+      <h1>{{'RegristationPaperFor'|Translate}}:{{CoursName}}</h1>
+      <div>
+        <label for="name">{{'Name'|Translate}}</label>
+        <input type="text" id="name" name="name" [(ngModel)]="model.FirstNameS" #thename="ngModel">
+      </div>
+      <div>
+        <label for="lastName">{{'LastName'|Translate}}</label>
+        <input type="text" id="lastName" name="lastName" [(ngModel)]="model.LastNameS" #theLastName="ngModel" required>
+      </div>
+      <div>
+        <label for="address">{{'Address'|Translate}}</label>
+        <input type="text" id="address" name="address" [(ngModel)]="model.AddressS" #theAddress="ngModel">
+      </div>
+      <div>
+        <label for="phone">{{'Phone'|Translate}}</label>
+        <input type="text" id="phone" name="phone" [(ngModel)]="model.PhoneS" #thePhone="ngModel">
+      </div>
+      <div>
+        <label for="mail">{{'Mail'|Translate}}</label>
+        <input type="email" id="mail" name="mail" [(ngModel)]="model.EmailS" #theMail="ngModel">
+      </div>
+      <div>
+        <label for="tz">{{'Tz'|Translate}}</label>
+        <input type="text" id="tz" name="tz" [(ngModel)]="model.TzS" #theTzS="ngModel">
+      </div>
+      <!-- <div>
+        <i class="fa fa-cc-visa"></i>
+        <label for="creditNum">{{'CreditNum'|Translate}}</label>
+        <input type="text" id="creditNum" name="creditNum" [(ngModel)]="model.Credit" #theCreditNum="ngModel">
+      </div>
+      <div>
+        <label for="tzOfCreditsMan">{{'TzOf'|Translate}}</label>
+        <input type="text" id="tzOfCreditsMan" name="TzOfCreditsMan" [(ngModel)]="model.TzOfCreditsMan"
+          #theTzOfCreditsMan="ngModel">
+      </div>
+      <div>
+        <label for="ExpiryDate">{{'ExpiryDate'|Translate}}</label>
+        <input type="date" id="ExpiryDate" name="ExpiryDate" [(ngModel)]="model.ExpiryDate" #theExpiryDate="ngModel">
+      </div>
+      <div>
+        <label for="ThreeDigit">{{'ThreeDigit'|Translate}}</label> -->
+        <!-- <input type="text" id="ThreeDigit" name="ThreeDigit" [(ngModel)]="model.ThreeDigit" #theThreeDigit="ngModel">
+      </div> -->
+      <button type="submit"  [disabled]="!formR.form.valid">{{'Ok'|Translate}}</button>
+      <button (click)="FuncBack()">ביטול</button>
+    </form>
+  </div>
+  
+  
+</div>
+
+<div *ngIf="ShowPopup" class="ShowPopupError">
+    <div class="Popup-text">
+        <h6 class="Exit" (click)="CancelPopup()">X</h6>
+      <p class="AlreadyRegistered" *ngIf="AlreadyRegistered">הינך רשום כבר לקורס זה</p>
+      <p class="FullCourse" *ngIf="FullCourse">קורס זה מלא, הינך נכנס לרשימת המתנה</p>
+      <div class="ShowPopupErrorButton">
+        <button class="button-ok" (click)="OkPopup()">{{'OK'|Translate}}</button>
+      </div>
+    </div>
+  </div>

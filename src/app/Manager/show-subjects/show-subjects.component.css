@@ -1,0 +1,47 @@
+
+  .manager-subject{
+    margin-top: 18rem;
+  }
+  .manager-subject p{
+    font-size: 39px;
+    margin-left: 9%;
+    border-bottom: 1px solid black;
+    margin-bottom: 3rem;
+  }
+  .table-subject tr th{
+    background-color: #abdcac;
+  }
+  .btn-success{
+    background-color: #4c7b4c;
+    width: 9rem;
+  }
+ .DeleteConfirm{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.Subject-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 81%;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  text-align: center;
+}
+.manager-subject .errorDeleteCategory{
+  font-size: 16px;
+  border-bottom: none;
+  margin-bottom: 10px;
+}
+.manager-subject .errorDeleteCategory:nth-of-type(1){
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+

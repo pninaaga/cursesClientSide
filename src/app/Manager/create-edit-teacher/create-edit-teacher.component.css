@@ -1,0 +1,33 @@
+.EditCreateTeacher{
+    /* margin-top:23rem; 
+    background-color: #efefef; */
+}
+.SubjectOfTeacher{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2rem;
+    border-left: 1px solid black;
+    padding-left: 15px;
+    margin-right: 0;
+}
+.SubjectOfTeacherContainer{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+.SubSubjectsOfTeacherContainer{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.SubSubjectsOfTeacher input{
+    margin-left: 7px;
+}
+.SubSubjectsOfTeacher{
+    line-height: 3;
+}

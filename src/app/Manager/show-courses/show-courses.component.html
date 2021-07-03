@@ -1,0 +1,61 @@
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
+
+<div class="manager-course">
+    <p>{{'Courses'|Translate}}</p>
+  <div class="Course-buttons">
+ <div class="input-group" style="width: 25%;position: inherit; margin-bottom: 12px;">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+  <input type="text" id="myInput" (keyup)="SearchC()" class="w3-input w3-border" placeholder="Search..." style="font-size: 110%" >
+</div> 
+  <button class="btn-success Create" (click)="CreateEditCourses(0, 0)">{{'Create'|Translate}}</button>
+</div>
+  <div class="table-course">
+  <table id="CoursesTable" class="table table-over">
+  <tr>
+     <!-- [(ngModel)]="model.search" #theCredit="ngModel"> -->
+  <th>{{'Id'|Translate}}</th>
+  <th>{{'Teacher'|Translate}}</th>
+  <th>{{'Subject'|Translate}}</th>
+  <th>{{'Day'|Translate}}</th>
+  <th>{{'FromHourC'|Translate}}</th>
+  <th>{{'UntilHourC'|Translate}}</th>
+  <th>{{'MinStudents'|Translate}}</th>
+  <th>{{'MaxStudents'|Translate}}</th>
+  <th>{{'IdTypeCourse'|Translate}}</th>
+  <th>{{'AmountHour'|Translate}}</th>
+  <th>{{'PricePerHour'|Translate}}</th>
+  <th>{{'AmountStudentRegistration'|Translate}}</th>
+  <th>{{'OpenCourse'|Translate}}</th>
+</tr>
+  <tr *ngFor="let c of ModelCourses">
+    <td>{{c.IdCourse}}</td>
+    <td>{{c.FirstNameT}}{{c.LastNameT}}</td>
+    <td>{{c.SubjectName}}</td>
+    <td>{{c.DayInWeekC}}</td>
+    <td>{{c.FromHourC}}</td>
+    <td>{{c.UntilHourC}}</td>
+    <td>{{c.MinStudents}}</td>
+    <td>{{c.MaxStudents}}</td>
+    <td>{{c.IdTypeCourse}}</td>
+    <td>{{c.AmountHour}}</td>
+    <td>{{c.PricePerHour}}</td>
+    <td>{{c.AmountStudentRegistration}}</td>
+    <td>{{c.OpenCourse}}</td>
+    <td><button class="btn-success" (click)="CreateEditCourses(c.IdCourse, c.IdSubject)">{{'Edit'|Translate}}</button></td>
+    <td><button class="btn-success" (click)="DeleteCourse(c.IdCourse)">{{'Delete'|Translate}}</button></td>
+  </tr>
+  </table>
+</div>
+</div>
+<div id="DeleteConfirmId" class="DeleteConfirm" style="display: none;">
+    <div class="DeleteConfirmText">
+      <h6 class="Exit" (click)="CancelDeleteCourse()">X</h6>
+    <p>{{'ConfirmDeleteCourse'|Translate}}</p>
+    <!-- Are you sure you want to delete?? -->
+    <div class="DeleteConfirmButton">
+      <button class="button-ok" (click)="OkDeleteCourse()">{{'OK'|Translate}}</button>
+      <button class="button-cencel" (click)="CancelDeleteCourse()">{{'CANCEL'|Translate}}</button>
+    </div>
+  </div>
+  </div>
+  <div class="loader" *ngIf="loader">Loading...</div>

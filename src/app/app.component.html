@@ -1,0 +1,13 @@
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256–2z0P7MLoyxByUtvAk/xjkmindefS4auh4Pfzbm7y6g0=" crossorigin="anonymous"> </script>
+
+
+<div class="app-container">
+<app-translate></app-translate>
+<app-logo></app-logo>
+<div [(ngModel)]="UserName1.FirstName" style="position: absolute; top:62px; margin-left:1.5rem; z-index: 99999999; color: white">{{UserName}} </div>
+<app-header></app-header>
+<div dir="rtl" class="w3-center div-container">
+<router-outlet></router-outlet>
+</div>
+</div>

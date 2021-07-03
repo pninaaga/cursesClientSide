@@ -1,0 +1,63 @@
+<app-wait-manager-confirm *ngIf="managerConfirm==false"></app-wait-manager-confirm>
+<div *ngIf="ShowContinueCours">
+  <form (ngSubmit)="SaveForm()" #formContinueOpenCours="ngForm">
+    <!-- <label for="Subject" >{{'Subject'|Translate}}</label>
+    <input type="text" name="Subject" id="subject" [(ngModel)]="modelStudent.Subject"><br><br>
+    <label for="Day" >{{'Day'|Translate}}</label>
+    <input type="text" name="Day" id="day" [(ngModel)]="modelStudent.DayInWeekC"><br><br>
+    <label for="FirstName" >{{'Name'|Translate}}</label>
+    <input type="text" name="FirstName" id="firstname" [(ngModel)]="modelStudent.FirstNameS"><br><br>
+    <label for="LastName" >{{'LastName'|Translate}}</label>
+   <input type="text" name="LastName" id="lastname" [(ngModel)]="modelStudent.LastNameS"><br><br>
+  <label for="Tz" >{{'Tz'|Translate}}</label>
+  <input type="text" name="Tz" id="tz" [(ngModel)]="modelStudent.TzS"><br><br>
+  <label for="Phone" >{{'Phone'|Translate}}</label>
+  <input type="text" name="Phone" id="phone" [(ngModel)]="modelStudent.PhoneS"><br><br>
+  <label for="Address" >{{'Address'|Translate}}</label>
+  <input type="text" name="Address" id="address" [(ngModel)]="modelStudent.AddressS"><br><br> -->
+  <!-- <label for="Address" >{{'Address'|Translate}}</label>
+  <input type="text" name="Address" id="address" [(ngModel)]="modelStudent.AddressS"><br><br>
+  <label for="Address" >{{'Address'|Translate}}</label>
+  <input type="text" name="Address" id="address" [(ngModel)]="modelStudent.AddressS"><br><br>
+  <label for="Address" >{{'Address'|Translate}}</label>
+  <input type="text" name="Address" id="address" [(ngModel)]="modelStudent.AddressS"><br><br> -->
+  <!-- <label for="email" >{{'Mail'|Translate}}</label>
+  <input type="email" name="email" id="email" [(ngModel)]="modelStudent.EmailS"><br><br> -->
+    <!-- <label [hidden]="modelStudent.MinStudent==0">{{'MinStudent'|Translate}}</label>
+    <label [hidden]="modelStudent.MinStudent==0">{{modelStudent.MinStudent}}</label><br> -->
+    <!-- <button type="submit" (click)="SaveForm()" [disabled]="!formContinueOpenCours.form.valid">{{'Ok'|Translate}}</button> -->
+    <label>{{'Day'|Translate}}:</label>
+    <label>{{modelStudent.DayInWeekC}}</label><br>
+    <label>{{'Name'|Translate}}:</label>
+    <label>{{modelStudent.FirstName}}</label><br>
+    <label>{{'LastName'|Translate}}:</label>
+    <label>{{modelStudent.LastName}}</label><br>
+    <label>{{'Tz'|Translate}}:</label>
+    <label>{{modelStudent.Tz}}</label><br>
+    <label>{{'Phone'|Translate}}:</label>
+    <label>{{modelStudent.Phone}}</label><br>
+    <label>{{'Address'|Translate}}:</label>
+    <label>{{modelStudent.Address}}</label><br>
+
+   <label>{{'Price'|Translate}}:</label><br>
+   <label>{{AllDetailsForOpenCoursComponent.PricePerHour}}</label><br>
+  <label>סה"כ</label><br>
+  <label>{{SumPrice}}</label><br>
+  <label>{{'AmountHour'|Translate}}</label><br> 
+  <label>{{AllDetailsForOpenCoursComponent.AmountHour}}</label><br>
+  <button type="submit"  [disabled]="!formContinueOpenCours.form.valid">לתשלום</button>
+  <!-- (click)="payment()" -->
+</form>
+  <button (click)="FuncChange()">שינוי</button>
+   <button (click)="FuncBack()">ביטול</button>
+  </div>
+   <div *ngIf="ShowPopup" class="ShowPopupError">
+    <div class="Popup-text">
+        <h6 class="Exit" (click)="CancelPopup()">X</h6>
+      <p  *ngIf="ThereIsCours"> קורס זה קיים במערכת ביום אותו בחרת, הנך יכולה להרשם אליו , אין אפשרות לפתוח קורס כל עוד הקורס הקיים לא בתפוסה מלאה </p>
+      <div class="ShowPopupErrorButton">
+        <button class="button-ok" (click)="OkPopup()">{{'OK'|Translate}}</button>
+      </div>
+    </div>
+  </div>
+

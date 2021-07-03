@@ -1,0 +1,323 @@
++
+
+
+
+<div id="exTab1" class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item" *ngIf="!Login">
+      <a class="nav-link" [ngClass]="{ 'active': tavActive}" (click)="tavActive=true">התחבר</a>
+    </li>
+    <li class="nav-item" *ngIf="!Login">
+      <a class="nav-link" [ngClass]="{ 'active': !tavActive}" (click)='tavActive=false'>הרשם</a>
+    </li>
+    <li class="nav-item" *ngIf="Login">
+      <a class="nav-link" [ngClass]="{ 'active': edit}" (click)='ConnectToSite(edit=true)'>ערוך פרופיל</a>
+    </li>
+    <li class="nav-item" *ngIf="Login">
+      <a class="nav-link" [ngClass]="{ 'active': logout}" (click)='Logout()'>התנתק</a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+<!-- //////////miri-start -->
+<div class="col-md-6 col-md-offset-3" *ngIf="tavActive">
+  <h2>חיבור לאתר</h2>
+  <form name="form" (ngSubmit)="f.form.valid && ConnectToSite()" #f="ngForm" novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !MailToConnect.valid }">
+      <label for="MailToConnect">מייל</label>
+      <input type="email" class="form-control" name="MailToConnect" [(ngModel)]="connect.MailToConnect" #MailToConnect="ngModel"
+        required email />
+      <div *ngIf="f.submitted && !MailToConnect.valid" class="help-block">Required valid email</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !PasswordC.valid }">
+      <label for="PasswordC">סיסמא</label>
+      <input type="password" class="form-control" name="PasswordC" [(ngModel)]="connect.PasswordC" #PasswordC="ngModel" required
+      />
+      <div *ngIf="f.submitted && !PasswordC.valid" class="help-block">Name is required</div>
+    </div>
+
+    <span  style="color:black" class="w3-right w3-padding w3-hide-small">
+      <a href="#" (click)="forgetPassword()" data-toggle="modal" data-target="#myModal" style="color: #c2a456;">{{'forgetPassword'|Translate}}</a>
+      <div *ngIf="massage===true">
+        <p>
+           קוד אימות נשלח כעת למייל שלך 
+        </p>
+      </div>
+    </span>
+
+
+    <div class="form-group">
+      <button type="submit" [disabled]="loading" class="btn btn-primary">התחבר</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      />
+    </div>
+  </form>
+  <a *ngIf="showError" style="color: red;">{{error}}</a>
+</div>
+
+<div class="col-md-6 col-md-offset-3" *ngIf="!tavActive || edit">
+  <h2 *ngIf="!edit">רישום לאתר</h2>
+  <h2 *ngIf="!tavActive && edit">ערוך פרטים</h2>
+
+  <form name="form" (ngSubmit)="f2.form.valid && ConnectToSite(edit) && newConnect=true" #f2="ngForm" novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !email.valid }">
+      <label for="MailToConnect">מייל</label>
+      <input type="email" class="form-control" name="MailToConnect" [(ngModel)]="connect.MailToConnect" #MailToConnect="ngModel"
+        required email />
+      <div *ngIf="f2.submitted && !MailToConnect.valid" class="help-block">Required valid email</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !name.valid }">
+      <label for="FirstName">שם פרטי</label>
+      <input type="text" class="form-control" name="FirstName" [(ngModel)]="connect.FirstName" #FirstName="ngModel" required />
+      <div *ngIf="f2.submitted && !FirstName.valid" class="help-block">First Name is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !numOfChidren.valid }">
+      <label for="LastName">שם משפחה</label>
+      <input type="text" class="form-control" name="LastName" [(ngModel)]="connect.LastName" #LastName="ngModel" required />
+      <div *ngIf="f2.submitted && !LastName.valid" class="help-block">LastName is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !address.valid }">
+      <label for="Phone">טלפון</label>
+      <input type="text" class="form-control" name="Phone" [(ngModel)]="connect.Phone" #Phone="ngModel" required />
+      <div *ngIf="f2.submitted && !Phone.valid" class="help-block">Phone is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !address.valid }">
+      <label for="Tz">ת.ז</label>
+      <input type="text" class="form-control" name="Tz" [(ngModel)]="connect.Tz" #address="ngModel" required />
+      <div *ngIf="f2.submitted && !Tz.valid" class="help-block">Tz is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f2.submitted && !password.valid }">
+      <label for="PasswordC">Password</label>
+      <input type="password" class="form-control" name="PasswordC" [(ngModel)]="connect.PasswordC" #PasswordC="ngModel" required
+      />
+      <div *ngIf="f2.submitted && !PasswordC.valid" class="help-block">Password is required</div>
+    </div>
+    <div class="form-group">
+   
+      <button *ngIf="!edit" type="submit" [disabled]="loading" class="btn btn-primary">הרשם</button>
+      <button *ngIf="edit" [disabled]="loading" class="btn btn-primary" (click)="Edit()">שמור</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      />
+    </div>
+  </form>
+  <a *ngIf="showError2" style="color: red;">{{error}}</a>
+</div>
+<div id="showSuccessRegister" *ngIf="successConnect" class="success-register">
+  <div>
+    <p (click)="CloseConnect()">X</p>
+    <h3>Success register :)</h3>
+    <button (click)="CloseConnect()">OK</button>
+  </div>
+</div>
+
+<!-- /////////miri-end -->
+
+<div id="showSuccessRegister" *ngIf="successEditProfile" class="success-register">
+  <div>
+    <p (click)="ClosesuccessEditProfile()">X</p>
+    <h3>Success Edit Profile :)</h3>
+    <button (click)="ClosesuccessEditProfile()">OK</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <span (click)="CloseConnect()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          <h3 style="color: blue" class="w3-xlarge">{{'connect'|Translate}}</h3>
+        </div>
+        <form class="w3-container w3-center" action="/action_page.php" *ngIf="tavActive">
+          <div class="w3-section nav nav-tabs">
+            <div class="nav-item">
+              <a class="nav-link" [ngClass]="{ 'active': tavActive}" (click)="tavActive=true">newUser{{'newUser'|Translate}}</a>
+              <br>
+            </div>
+            <div class="nav-item">
+              <a  class="nav-link" [ngClass]="{ 'active': !tavActive}" (click)='tavActive=false'>user{{'user'|Translate}}</a>
+              <br>
+            </div>
+            <div *ngIf="newConnect===true || editDetails===true">
+              <label>
+                <b style=" color: blue;" class="w3-right"> {{'Name'|Translate}}</b>
+              </label>
+              <div class="input-group">
+                <input [(ngModel)]="connect.FirstName" placeholder="{{'put'|Translate}} {{'Name'|Translate}}" class="form-control" type="text"
+                  name="fn" required style="text-align: center;">
+                <span class="input-group-addon" style="background-color:lightskyblue">
+                  <i class="glyphicon glyphicon-user" style="color: blue"></i>
+                </span>
+              </div>
+              <label>
+                <b style=" color: blue" class="w3-right"> {{'LastName'|Translate}}</b>
+              </label>
+              <div class="input-group">
+                <input [(ngModel)]="connect.LastName" placeholder="{{'put'|Translate}} {{'LastName'|Translate}}" class="form-control" type="text"
+                  name="ln" required style="text-align: center">
+                <span class="input-group-addon" style="background-color:lightskyblue">
+                  <i class="glyphicon glyphicon-user" style="color: blue"></i>
+                </span>
+              </div>
+              <label>
+                <b style=" color: blue" class="w3-right">{{'Phone'|Translate}}</b>
+              </label>
+              <div class="input-group">
+                <input [(ngModel)]="connect.Phone" placeholder="{{'put'|Translate}} {{'Phone'|Translate}}" class="form-control" type="text"
+                  name="phone" required style="text-align: center">
+                <span class="input-group-addon" style="background-color:lightskyblue">
+                  <i class="glyphicon glyphicon-earphone" style="color: blue"></i>
+                </span>
+              </div>
+              <label>
+                <b style="color: blue" class="w3-right">{{'Tz'|Translate}}</b>
+              </label>
+              <div class="input-group">
+                <input [(ngModel)]="connect.Tz" id="Tz" type="text" class="form-control" name="Tz" placeholder="{{'put'|Translate}} {{'Tz'|Translate}}"
+                  #Tz="ngModel" required style="text-align: center">
+                <span class="input-group-addon" style="background-color:lightskyblue">
+                  <i class="glyphicon glyphicon-user" style="color: blue"></i>
+                </span>
+              </div>
+            </div>
+
+            <label>
+              <b style="color: blue" class="w3-right">{{'Mail'|Translate}}</b>
+            </label>
+            <div class="input-group">
+              <input [(ngModel)]="connect.MailToConnect" id="email" type="text" class="form-control" name="email" placeholder="{{'put'|Translate}} {{'Mail'|Translate}}"
+                #email="ngModel" required style="text-align: center">
+              <span class="input-group-addon" style="background-color:lightskyblue">
+                <i class="glyphicon glyphicon-user" style="color: blue"></i>
+              </span>
+            </div>
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alertdanger">
+              <div *ngIf="email.errors.required">
+                שדה חובה
+              </div>
+            </div>
+            <label>
+              <b style="color: blue" class="w3-left">{{'password'|Translate}}</b>
+            </label>
+            <div class="input-group">
+              <input [(ngModel)]="connect.PasswordC" placeholder="{{'put'|Translate}} {{'password'|Translate}}" class="form-control" type="password"
+                name="psw" required style="text-align: center" required>
+              <span class="input-group-addon" style="background-color:lightskyblue">
+                <i class="glyphicon glyphicon-lock" style="color: blue"></i>
+              </span>
+            </div>
+            <br>
+            <a *ngIf="newConnect==false" class="w3-left" style="color: blue" (click)="Edit()">
+              <span class="glyphicon glyphicon-edit" style="color: blue"></span>
+              {{'editDetails'|Translate}}</a>
+            <span *ngIf="newConnect==false" style="color:black" class="w3-right w3-padding w3-hide-small">
+              <a href="#" (click)="forgetPassword()" data-toggle="modal" data-target="#myModal" style="color: blue;">{{'forgetPassword'|Translate}}</a>
+              <div *ngIf="massage===true">
+                <p>
+                   קוד אימות נשלח כעת למייל שלך 
+                </p>
+              </div>
+            </span>
+          </div>
+        </form>
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-blue">
+          <button (click)="ConnectToSite(edit)" onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-border 'w3-button' w3-container"
+            style="background-color: blue">{{'connect'|Translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

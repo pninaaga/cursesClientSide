@@ -1,0 +1,55 @@
+
+<div class="w3-center contact-contain">
+<!-- <p>
+  contact works!
+</p> -->
+
+<h3>צור קשר</h3>
+<div style="border-bottom-style:groove;color: black; width: 90%;
+margin-right: 5%;"></div><br>
+<div id="addres"  >
+<p>
+    {{'contact1'|Translate}}
+     <!-- :על כל בקשה, הערה או הארה צרו עמנו קשר -->
+</p>
+<p> 
+   <!-- {{'contact2'|Translate}}{{'contact11'|Translate}} -->
+  <!-- משרד ראשי: בריכת "קרן אור" אבא הלל סילבר 3, רמות א' ירושלים -->
+</p>
+<p>  {{'contact3'|Translate}}
+  <!-- 052-7170595   , טל: 052-5403999 -->
+</p>
+<p>  {{'contact4'|Translate}}
+  <!-- 025004970 :פקס -->
+</p>
+<p>  {{'contact5'|Translate}}
+  <!-- TnuaBamaim@gmail.com  :מייל  -->
+</p>
+</div>
+<p><!-- :ניתן להשאיר פרטים ואנו ניצור אתכם קשר -->
+  {{'contact6'|Translate}}</p>
+<div id="contact"  >
+        
+   
+    <div class="w3-cell w3-container">
+      <div class="contact-details" style="width:54%;">
+        <p>{{'contact7'|Translate}}</p>
+        <input [(ngModel)]="name" style="width:85%;"/>
+      </div>
+      <div class="contact-details" style="width:42% ;">
+        <p>{{'contact8'|Translate}}</p>
+        <input [(ngModel)]="phone" style="width:83% ;"/>
+      </div>
+      <div class="contact-details" style="width:60% ;">
+        <p>{{'contact9'|Translate}}</p>
+        <input [(ngModel)]="mail" />
+      </div>
+      <div class="contact-details" style="width:100% ;">
+        <p class="textarea-p"> {{'contact10'|Translate}}</p>
+         <textarea [(ngModel)]="comment" ></textarea> 
+        </div>
+    <br><button (click)="send(name,phone,mail,comment)" class="w3-blue contact-send">{{'send'|Translate}}</button>
+  </div>
+
+<br>
+

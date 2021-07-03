@@ -1,0 +1,79 @@
+<div class="title" *ngIf="id==0 || id==-2">{{'CreateCourse'|Translate}}</div>
+<div class="title" *ngIf="id!=0 && id!=-2">{{'EditCourse'|Translate}} </div>
+<div class=EditCreateCourse>
+  <form (ngSubmit)="FuncSave()" #theForm="ngForm">
+
+    <div>
+      <label for="IdSubject">{{'Subject'|Translate}} </label>
+      <label *ngIf="id!=0 && id!=-2">{{ model.SubjectName}}</label>
+      <!-- <input type="string"  id="IdSubject" name="IdSubject" [(ngModel)]="model.SubjectName" #theIdSubject="ngModel" ><br><br> -->
+      <select *ngIf="id==0 ||id==-2" (change)="ChangeCourse(model.SubjectName)" name="IdSubject" id="IdSubject" placeholder="בחר מורה"
+        [(ngModel)]="model.SubjectName" #theIdSubject="ngModel">
+        <option> {{ model.SubjectName}}</option>
+        <option *ngFor="let s of Subject"> {{ s.SubjectName}}</option>
+      </select>
+      <button for="differentSubject" (click)="otherSubject=true && ShowOtherSubject=true">...</button>
+      <input type="text" *ngIf="otherSubject && ShowOtherSubject" (keypress)="GetFatherSubject=true" (mouseout)="GetFatherSubjectFunc()"
+        id="differentSubject" name="differentSubject" [(ngModel)]="model.SubjectName" #thedifferentSubject="ngModel">
+    </div>
+
+    <div *ngIf="ShowOtherSubject && GetFatherSubject">
+      <label for="FatherSubject">{{'FatherSubject'|Translate}}</label>
+      <select name="FatherSubject" id="FatherSubject" [(ngModel)]="model.FatherSubject" #theFatherSubject="ngModel">
+        <option *ngFor="let f of FatherSubject">
+          <div *ngIf="f!=null">{{f.SubjectName}}</div>
+        </option>
+      </select>
+      <button for="differentFatherSubject" (click)="otherFatherSubject=true">...</button>
+      <input type="text" *ngIf="otherFatherSubject" (keypress)="GetFatherSubject=true" (mouseout)="GetFatherSubjectFunc()" id="differentFatherSubject"
+        name="differentFatherSubject" [(ngModel)]="model.FatherSubject" #thedifferentFatherSubject="ngModel">
+    </div>
+    <label for="DayInWeekC">{{'Day'|Translate}}</label>
+    <input type="number" id="DayInWeekC" name="DayInWeekC" [(ngModel)]="model.DayInWeekC" #theDayInWeekC="ngModel" required>
+    <label for="FromHourC">{{'FromHourC'|Translate}}</label>
+    <input type="time" id="FromHourC" name="FromHourC" [(ngModel)]="model.FromHourC" #theFromHourC="ngModel">
+    <br>
+    <br>
+    <label for="UntilHourC">{{'UntilHourC'|Translate}}</label>
+    <input type="time" id="UntilHourC" name="UntilHourC" [(ngModel)]="model.UntilHourC" #theUntilHourC="ngModel">
+    <br>
+    <br>
+    <label for="MinStudents">{{'MinStudents'|Translate}}</label>
+    <input type="number" id="MinStudents" name="MinStudents" [(ngModel)]="model.MinStudents" #theMinStudents="ngModel">
+    <br>
+    <br>
+    <label for="MaxStudents">{{'MaxStudents'|Translate}}</label>
+    <input type="number" id="MaxStudents" name="MaxStudents" [(ngModel)]="model.MaxStudents" #theMaxStudents="ngModel">
+    <br>
+    <br>
+    <label for="IdTypeCourse">{{'IdTypeCourse'|Translate}}</label>
+    <input type="number" id="IdTypeCourse" name="IdTypeCourse" [(ngModel)]="model.IdTypeCourse" #theIdTypeCourse="ngModel">
+    <br>
+    <br>
+    <label for="AmountHour">{{'AmountHour'|Translate}}</label>
+    <input type="number" id="AmountHour" name="AmountHour" [(ngModel)]="model.AmountHour" #theAmountHour="ngModel">
+    <br>
+    <br>
+    <label for="PricePerHour">{{'PricePerHour'|Translate}}</label>
+    <input type="number" id="PricePerHour" name="PricePerHour" [(ngModel)]="model.PricePerHour" #thePricePerHour="ngModel">
+    <br>
+    <br>
+    <label for="OpenCourse">{{'OpenCourse'|Translate}}</label>
+    <input type="number" id="OpenCourse" name="OpenCourse" [(ngModel)]="model.OpenCourse" #theOpenCourse="ngModel">
+    <br>
+    <br>
+    <div>
+      <div>
+        <!-- *ngIf="ShowTeachers" -->
+        <label for="Teacher">{{'Teacher'|Translate}}</label>
+        <select name="Teacher" id="Teacher" placeholder="בחר מורה" [(ngModel)]="model.TzT" #theTeacher="ngModel">
+          <option>{{model.FirstNameT}} {{model.LastNameT}} ({{model.TzT}})</option>
+          <option *ngFor="let t of Teachers">{{t.FirstNameT}} {{t.LastNameT}} ({{t.TzT}})</option>
+        </select>
+      </div>
+      <button *ngIf="otherSubject" (click)="CreateTeacherOfCreateCourse()">צור מורה</button>
+    </div>
+    <button type="submit" [disabled]="!theForm.form.valid">{{'Ok'|Translate}}</button>
+
+  </form>
+</div>

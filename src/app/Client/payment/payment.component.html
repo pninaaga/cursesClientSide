@@ -1,0 +1,13 @@
+{{'Payment'|Translate}}
+<form (ngSubmit)="SaveForm()" #formPayment="ngForm">
+       <label for="Credit" >{{'Credit'|Translate}}</label>
+  <input type="text" name="Credit" id="Credit" [(ngModel)]="modelStudent.Credit"><br><br>
+  <label for="ExpiryDate" >{{'ExpiryDate'|Translate}}</label>
+  <input type="date" name="ExpiryDate" id="ExpiryDate" [(ngModel)]="modelStudent.ExpiryDate"><br><br>
+  <label for="ThreeDigit" >{{'ThreeDigit'|Translate}}</label>
+  <input type="text" name="ThreeDigit" id="ThreeDigit" [(ngModel)]="modelStudent.ThreeDigit"><br><br>
+  <label for="TzOfCreditsMan" >{{'TzOf'|Translate}}</label>
+  <input type="text" name="TzOfCreditsMan" id="TzOfCreditsMan" [(ngModel)]="modelStudent.TzOfCreditsMan"><br><br>
+  <button type="submit"  [disabled]="!formPayment.form.valid">{{'Ok'|Translate}}</button>
+
+</form>

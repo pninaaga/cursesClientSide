@@ -1,0 +1,56 @@
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
+<div class="manager-student">
+    <p>{{'Students'|Translate}}</p>
+    <div class="Student-buttons">
+   <div class="input-group" style="width: 25%;position: inherit; margin-bottom: 12px;">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+    <input type="text" id="myInput" (keyup)="SearchS()" class="w3-input w3-border" placeholder="Search..." style="font-size: 110%" >
+  </div> 
+  <button class="btn-success Create" (click)="CreateEditStudent(0)">{{'Create'|Translate}}</button>
+</div>
+  <div class="table-student">
+  <table id="StudentsTable" class="table table-over">
+  <tr>
+      <th>{{'Id'|Translate}}</th>
+    <th>{{'Tz'|Translate}}</th>
+  <th>{{'Name'|Translate}}</th>
+  <th>{{'LastName'|Translate}}</th>
+  <th>{{'Address'|Translate}}</th>
+  <th>{{'Phone'|Translate}}</th>
+  <th>{{'Mail'|Translate}}</th>
+  <!-- <th>{{'CreditNum'|Translate}}</th>
+  <th>{{'ExpiryDate'|Translate}}</th>
+  <th>{{'ThreeDigit'|Translate}}</th>
+  <th>{{'TzOf'|Translate}}</th> -->
+ 
+</tr>
+  <tr *ngFor="let s of Students">
+      <td>{{s.IdStudent}}</td>
+    <td>{{s.TzS}}</td>
+    <td>{{s.FirstNameS}}</td>
+    <td>{{s.LastNameS}}</td>
+    <td>{{s.AddressS}}</td>
+    <td>{{s.PhoneS}}</td>
+    <td>{{s.EmailS}}</td>
+    <!-- <td>{{s.Credit}}</td>
+    <td>{{s.ExpiryDate}}</td>
+    <td>{{s.ThreeDigit}}</td>
+    <td>{{s.TzOfCreditsMan}}</td> -->
+    <td><button class="btn-success" (click)="CreateEditStudent(s.IdStudent)">{{'Edit'|Translate}}</button></td>
+    <td><button class="btn-success" (click)="DeleteStudent(s.IdStudent)">{{'Delete'|Translate}}</button></td>
+  </tr>
+  </table>
+</div>
+</div> 
+<div id="DeleteConfirmId" class="DeleteConfirm" style="display: none;">
+  <div class="DeleteConfirmText">
+    <h6 class="Exit" (click)="CancelDeleteStudent()">X</h6>
+  <p>{{'ConfirmDeleteStudent'|Translate}}</p>
+  <!-- Are you sure you want to delete?? -->
+  <div class="DeleteConfirmButton">
+    <button class="button-ok" (click)="OkDeleteStudent()">{{'OK'|Translate}}</button>
+    <button class="button-cencel" (click)="CancelDeleteStudent()">{{'CANCEL'|Translate}}</button>
+  </div>
+</div>
+</div>
+<div class="loader" *ngIf="loader">Loading...</div>

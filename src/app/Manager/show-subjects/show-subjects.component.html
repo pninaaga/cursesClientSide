@@ -1,0 +1,47 @@
+<div class="manager-subject">
+    <div *ngIf="errorDeleteCategory">
+      <p class="errorDeleteCategory" (click)="errorDeleteCategory=false">X</p>
+      <p class="errorDeleteCategory">{{'errorDeleteCategoryText'|Translate}}</p>
+    </div>
+  <p>{{'Subject'|Translate}}</p>
+  <div class="Subject-buttons">
+ <div class="input-group" style="width: 25%;position: inherit; margin-bottom: 12px;">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+  <input type="text" id="myInput" (keyup)="SearchS()" class="w3-input w3-border" placeholder="Search..." style="font-size: 110%" >
+</div> 
+<button class="btn-success Create" (click)="CreateEditSubject(0)">{{'Create'|Translate}}</button>
+</div>
+<div class="table-subject">
+<table id="SubjectsTable" class="table table-over">
+<tr>
+    <th>{{'Id'|Translate}}</th>
+    <th>{{'Subject'|Translate}}</th>
+    <th>{{'FatherSubject'|Translate}}</th>
+    <th>{{'CourseExplainText'|Translate}}</th>
+    <th>{{'Picture'|Translate}}</th>
+</tr>
+
+<tr *ngFor="let s of Subjects">
+    <td>{{s.IdSubject}}</td>
+  <td>{{s.SubjectName}}</td>
+  <td>{{s.SubjectNameFather}}</td>
+  <td>{{s.CourseExplainText}}</td>
+  <td>{{s.Picture}}</td>
+  <td><button class="btn-success" (click)="CreateEditSubject(s.IdSubject)">{{'Edit'|Translate}}</button></td>
+  <td><button class="btn-success" (click)="DeleteSubject(s.IdSubject)">{{'Delete'|Translate}}</button></td>
+</tr>
+</table>
+</div>
+</div>
+
+<div id="DeleteConfirmId" class="DeleteConfirm" style="display: none;">
+<div class="DeleteConfirmText">
+  <h6 class="Exit" (click)="CancelDeleteSubject()">X</h6>
+<p>{{'ConfirmDeleteSubject'|Translate}}</p>
+<div class="DeleteConfirmButton">
+  <button class="button-ok" (click)="OkDeleteSubject()">{{'OK'|Translate}}</button>
+  <button class="button-cencel" (click)="CancelDeleteSubject()">{{'CANCEL'|Translate}}</button>
+</div>
+</div>
+</div>
+<div class="loader" *ngIf="loader">Loading...</div>

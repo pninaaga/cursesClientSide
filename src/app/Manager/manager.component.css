@@ -1,0 +1,110 @@
+.manager-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin-top: 26rem;
+}
+.manager-buttons button{
+    line-height: inherit;
+    /* border-radius: 8px; */
+    height: 5rem;
+    width: 24%;
+    margin: 0 3px;
+    color: #c2a456;
+    background-color: white;
+    border-color: white;
+    font-size: 16px;
+    box-shadow: inset 1px 0px 5px 1px;
+    font-family: Calibri;
+}
+.btn-success{
+    background-color: #4c7b4c;
+    width: 9rem;
+  }
+  .manager-buttons{
+    margin-right: 7%;
+    width: 86%;
+}
+.DeleteConfirmText{
+    background-color: white;
+    height: 21rem;
+    width: 32%;
+    border-radius: 8px;
+    margin-top: 18rem;
+    position: relative;
+}
+.DeleteConfirmTex p {
+    color: #294156;
+    font-size: 23px;
+    margin-top: 6rem;
+}
+.DeleteConfirmButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 7rem;
+    border-radius: 0 0 8px 8px;
+    background-color: #294156;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+}
+.DeleteConfirmButton button {
+    background-color: white;
+    color: #294156;
+    font-size: 14px;
+    width: 42%;
+    /* border: none; */
+    /* border-radius: 3px; */
+    border-color: white;
+    height: 40px;
+}
+.DeleteConfirmButton button:hover{
+    background-color:#f5f7f9 ;
+  }
+  .DeleteConfirmText p{
+    color: #294156;
+    font-size: 31px;
+    margin-top: 8rem;
+  }
+  .Exit{
+    position: absolute;
+    top:3px;
+    left: 3px;
+    font-size: 18px;
+    color:#294156;
+    background-color: transparent; 
+    height: 3rem;
+    width: 3rem;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Exit:hover{
+    background-color:red;
+    color: white;
+  }
+  .DeleteConfirmText p{
+    color: #294156;
+    font-size: 22px;
+    margin-top: 6rem;
+}
+.Create{
+    width: 16rem;
+    height: 42px;
+    border-radius: 5px;
+    background-color: #c2a456 !important;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+  .title{
+      font-size: 39px;
+      margin-left: 9%;
+      border-bottom: 1px solid black;
+      margin-bottom: 3rem;
+  }
+  

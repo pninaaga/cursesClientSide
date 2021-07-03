@@ -1,0 +1,20 @@
+<div class="title" *ngIf="id==0">{{'CreateStudent'|Translate}}</div>
+<div class="title" *ngIf="id!=0">{{'EditStudent'|Translate}} </div>
+<div class="EditCreateStudent">
+  <form (ngSubmit)="FuncSave()" #theForm="ngForm">
+  <label for="name">{{'Name'|Translate}}</label>
+  <input type="text"  id="name" name="name" [(ngModel)]="model.FirstNameS" #thename="ngModel" ><br><br>
+  <label for="lastName">{{'LastName'|Translate}}</label>
+  <input type="text" id="lastName" name="lastName" [(ngModel)]="model.LastNameS" #theLastName="ngModel" required><br><br>
+  <label for="address">{{'Address'|Translate}}</label>
+  <input type="text"  id="address" name="address" [(ngModel)]="model.AddressS" #theAddress="ngModel"><br><br>
+  <label for="phone">{{'Phone'|Translate}}</label>
+  <input type="text"  id="phone" name="phone" [(ngModel)]="model.PhoneS" #thePhone="ngModel"><br><br>
+  <label for="mail">{{'Mail'|Translate}}</label>
+  <input type="email"  id="mail" name="mail" [(ngModel)]="model.EmailS" #theMail="ngModel"><br><br>
+  <label for="Tz">{{'Tz'|Translate}}</label>
+  <input type="text"  id="Tz" name="tz" [(ngModel)]="model.TzS" #theTz="ngModel"><br><br>
+   <!-- <input type="text"  id="TzOfCreditsMan" name="TzOfCreditsMan" [(ngModel)]="model.TzOfCreditsMan" #theTzOf="ngModel"><br><br>  -->
+  <button type="submit" [disabled]="!theForm.form.valid">{{'Ok'|Translate}}</button>
+</form>
+</div>

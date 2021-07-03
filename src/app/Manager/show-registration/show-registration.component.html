@@ -1,0 +1,47 @@
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
+<div class="manager-registration">
+    <p>{{'RegistrationTbl'|Translate}}</p>
+    <div class="Registration-buttons">
+   <div class="input-group" style="width: 25%;position: inherit; margin-bottom: 12px;">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+    <input type="text" id="myInput" (keyup)="SearchR()" class="w3-input w3-border" placeholder="Search..." style="font-size: 110%" >
+  </div> 
+</div>
+  <div class="table-registration">
+  <table id="RegistrationTable" class="table table-over">
+  <tr>
+      <th>{{'Id'|Translate}}</th>
+   <th>{{'IdCourse'|Translate}}</th>
+   <th>{{'NameCourse'|Translate}}</th>
+  <th>{{'Name'|Translate}}</th>
+  <th>{{'LastName'|Translate}}</th>
+  <th>{{'Tz'|Translate}}</th>
+  <th>{{'RegistrationDate'|Translate}}</th>
+ 
+</tr>
+  <tr *ngFor="let r of Registrations">
+      <td>{{r.IdRegistration}}</td>
+    <td>{{r.IdCourse}}</td>
+    <td>{{r.SubjectName}}</td>
+    <td>{{r.FirstNameS}}</td>
+    <td>{{r.LastNameS}}</td>
+    <td>{{r.TzS}}</td>
+    <td>{{r.RegistrationDate}}</td>
+    <td><button class="btn-success" (click)="DeleteRegistration(r.IdRegistration)">{{'Delete'|Translate}}</button></td>
+  </tr>
+  </table>
+</div>
+</div> 
+<div id="DeleteConfirmId" class="DeleteConfirm" style="display: none;">
+  <div class="DeleteConfirmText">
+    <h6 class="Exit" (click)="CancelDeleteRegistration()">X</h6>
+  <p>{{'ConfirmDeleteRegistration'|Translate}}</p>
+  <!-- Are you sure you want to delete?? -->
+  <div class="DeleteConfirmButton">
+    <button class="button-ok" (click)="OkDeleteRegistration()">{{'OK'|Translate}}</button>
+    <button class="button-cencel" (click)="CancelDeleteRegistration()">{{'CANCEL'|Translate}}</button>
+  </div>
+</div>
+</div>
+<div class="loader" *ngIf="loader">Loading...</div>
+

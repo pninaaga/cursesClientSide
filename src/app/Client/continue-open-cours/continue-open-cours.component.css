@@ -1,0 +1,71 @@
+.ShowPopupError{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Popup-text{
+    width: 42rem;
+    height: 17rem;
+    background-color: white;
+}
+
+.ShowPopupError p {
+    color: #294156;
+    font-size: 23px;
+    /* margin-top: 6rem; */
+}
+/* .ShowPopupErrorButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 7rem;
+    border-radius: 0 0 8px 8px;
+    background-color: #294156;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+} */
+.ShowPopupError button {
+    background-color: white;
+    color: #294156;
+    font-size: 14px;
+    width: 42%;
+    /* border: none; */
+    /* border-radius: 3px; */
+    border-color: #294156;
+    height: 40px;
+    margin-top: 17px;
+}
+.ShowPopupErrorButton button:hover{
+    background-color:#f5f7f9 ;
+  }
+  .ShowPopupError p{
+    color: #294156;
+    font-size: 22px;
+    /* margin-top: 8rem; */
+  }
+  .Exit{
+    /* position: absolute;
+    top:3px;
+    left: 3px; */
+    font-size: 18px;
+    color:#294156;
+    background-color: transparent; 
+    height: 3rem;
+    width: 3rem;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Exit:hover{
+    background-color:red;
+    color: white;
+  }
